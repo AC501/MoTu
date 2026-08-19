@@ -1,0 +1,26 @@
+# ========== 1. ubodt_gen：预计算最短路径表 ==========
+/cygdrive/d/fmm-master/build/ubodt_gen \                     # 调用 FMM 的 UBODT 生成工具
+  --network "./chengdu_road_network2/edges.shp" \            # 路网文件（Shapefile）
+  --output ubodt_chengdu_0.02.txt \                          # 输出的 UBODT 文件名
+  --delta 0.02 \                                             # 最短路径距离上限（0.02° ≈ 2.2km）
+  --network_id fid \                                         # 路网边表的 ID 字段名
+  --source u \                                               # 起点节点字段名（OSMnx 默认）
+  --target v                                                 # 终点节点字段名（OSMnx 默认）
+
+# ========== 2. fmm：轨迹匹配 ==========
+/cygdrive/d/fmm-master/build/fmm \                           # 调用 FMM 主程序
+  --network ./chengdu_road_network2/edges.shp \              # 路网文件
+  --network_id fid \                                         # 路网边表 ID 字段
+  --source u \                                               # 起点节点字段
+  --target v \                                               # 终点节点字段
+  --ubodt ubodt_chengdu_0.02.txt \                           # 预先计算好的 UBODT 文件
+  --gps trajectories_wkt_short.csv \                         # 输入轨迹文件（WKT 格式）
+  --output result_traj_wkt_500_0.02_r0.02.txt \              # 匹配结果输出文件
+ --gps_id id \                                              # 输入轨迹的 ID 列名
+  --gps_geom geometry \                                      # 输入轨迹的几何列名（WKT LINESTRING）
+  --gps_timestamp timestamp \                                # 输入轨迹的时间戳列名
+  -k 20 \                                                   # 每个 GPS 点的候选路段数（20 条）
+  -r 0.02 \                                                 # 搜索半径（0.02° ≈ 2.2km）
+  -e 0.005 \                                                # GPS 定位误差（0.005° ≈ 550m）
+  --use_omp \                                               # 启用多核并行加速
+  --output_fields all                                        # 输出所有字段（cpath, mgeom, spdist 等）
