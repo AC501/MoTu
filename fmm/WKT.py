@@ -1,4 +1,4 @@
-import csv
+import csv#将轨迹转换为WKT格式输入
 from collections import defaultdict
 
 input_file = 'worst_dist_5_10_trajectories.csv'
