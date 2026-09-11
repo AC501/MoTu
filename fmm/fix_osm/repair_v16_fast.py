@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-repair_v13.py —— 通用「参考几何补路」引擎: 由 fixed_v12 + 补丁清单生成 fixed_v13
-====================================================================================
 输入:
     BASE_NET  : 基网目录(默认 chengdu_road_network2_fixed_v15, 只读)
     PATCH_FILE: 补丁清单 JSON(默认 v16_patches.json, 由 analyze_v13.py 产出/人工核对)
