@@ -16,7 +16,6 @@
     ①打断插点: 把要接入的边在锚点处打断成两段, 插入新节点
     ②加双向边: 沿参考几何新增 A<->B 两条(oneway=False, reversed False/True)
     ③nodes 追加新节点; ④自检(残留/计数/节点存在)
-用法: python repair_v13.py          # 读取 v16_patches.json 生成 fixed_v13
 """
 import json
 import math
