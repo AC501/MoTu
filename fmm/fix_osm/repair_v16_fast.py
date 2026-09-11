@@ -2,7 +2,7 @@
 """
 输入:
     BASE_NET  : 基网目录(默认 chengdu_road_network2_fixed_v15, 只读)
-    PATCH_FILE: 补丁清单 JSON(默认 v16_patches.json, 由 analyze_v13.py 产出/人工核对)
+    PATCH_FILE: 补丁清单 JSON(默认 v16_patches.json)
                 每条补丁字段:
                   tid   轨迹id; name 名称(仅日志)
                   A,B   补路段两端(参考线上坐标 [x,y])
